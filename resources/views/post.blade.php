@@ -31,6 +31,10 @@
       color: #ffc107 !important;
     }
 
+    .nav-link.active {
+      color: #ffc107 !important;
+    }
+
     /* Post cards */
     .post-card {
       height: 500px;
@@ -40,7 +44,6 @@
       overflow: hidden;
       margin-bottom: 30px;
       transition: transform 0.3s;
-       
     }
 
     .post-card:hover {
@@ -87,7 +90,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-      <a class="navbar-brand" href="{{ url('/welcome') }}">Blog fanta e game</a>
+      <a class="navbar-brand" href="{{ route('welcome') }}">Blog fanta e game</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -95,16 +98,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/welcome') }}">Home</a>
+            <a class="nav-link {{ Route::is('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="{{ url('/post') }}">Post</a>
+            <a class="nav-link {{ Route::is('post') ? 'active' : '' }}" href="{{ route('post') }}">Post</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/servizi') }}">Servizi</a>
+            <a class="nav-link {{ Route::is('servizi') ? 'active' : '' }}" href="{{ route('servizi') }}">Servizi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/about') }}">Chi sono</a>
+            <a class="nav-link {{ Route::is('about') ? 'active' : '' }}" href="{{ route('about') }}">Chi sono</a>
           </li>
         </ul>
       </div>
@@ -126,7 +129,8 @@
             </div>
             <h3>{{ $post['title'] }}</h3>
             <p>{{ $post['content'] }}</p>
-            <a href="#" class="btn btn-primary">Leggi di più</a>
+            <a href="{{ route('post.show', $post['id']) }}" class="btn btn-primary">Leggi di più</a>
+
           </div>
         </div>
       </div>

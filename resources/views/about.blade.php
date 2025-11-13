@@ -34,6 +34,10 @@
       color: #ffc107 !important;
     }
 
+    .nav-link.active {
+      color: #ffc107 !important;
+    }
+
     /* Contenuto principale */
     .main-content {
       flex: 1 0 auto;
@@ -88,16 +92,24 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ url('/welcome') }}">Blog fanta e game</a>
+      <a class="navbar-brand" href="{{ route('welcome') }}">Blog fanta e game</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="{{ url('/welcome') }}">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url('/post') }}">Post</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url('/servizi') }}">Servizi</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">Chi siamo</a></li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('post') ? 'active' : '' }}" href="{{ route('post') }}">Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('servizi') ? 'active' : '' }}" href="{{ route('servizi') }}">Servizi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('about') ? 'active' : '' }}" href="{{ route('about') }}">Chi siamo</a>
+          </li>
         </ul>
       </div>
     </div>

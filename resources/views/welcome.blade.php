@@ -7,11 +7,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
       font-family: 'Arial', sans-serif;
       background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Navbar */
@@ -32,6 +34,11 @@
 
     .nav-link:hover {
       color: #ffc107 !important;
+    }
+
+    /* Main content */
+    main {
+      flex: 1 0 auto; /* cresce per spingere il footer in basso */
     }
 
     /* Header / Hero */
@@ -84,11 +91,11 @@
 
     /* Footer */
     footer {
+      flex-shrink: 0;
       background-color: #343a40;
       color: #fff;
       text-align: center;
       padding: 20px 0;
-      margin-top: 50px;
       border-top: 3px solid #007bff;
     }
   </style>
@@ -98,7 +105,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
       <a class="navbar-brand" href="{{ url('/welcome') }}">Blog fanta e game</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -113,22 +121,22 @@
             <a class="nav-link" href="{{ url('/servizi') }}">Servizi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/about') }}">Chi sono</a>
+            <a class="nav-link" href="{{ url('/about') }}">Chi siamo</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="bg-light text-center">
-    <div class="container">
+  <main>
+    <header class="bg-light text-center container">
       <img src="{{ $intro['image'] }}" class="img-fluid mb-3" alt="Intro Image">
       <h1>{{ $intro['titolo'] }}</h1>
       <h4 class="text-muted">{{ $intro['sottotitolo'] }}</h4>
       <p class="mt-3">{{ $intro['descrizione'] }}</p>
       <a href="{{ url('/post') }}" class="btn btn-primary mt-3">Inizia a leggere</a>
-    </div>
-  </header>
+    </header>
+  </main>
 
   <footer>
     &copy; 2025 Blog fanta e game

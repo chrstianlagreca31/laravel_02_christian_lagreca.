@@ -8,95 +8,102 @@
 
   <style>
   html, body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-}
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+  }
 
-/* Navbar */
-.navbar {
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+  /* Navbar */
+  .navbar {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
 
-.navbar-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
 
-.nav-link {
-  font-weight: 500;
-  transition: color 0.3s;
-}
+  .nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+  }
 
-.nav-link:hover {
-  color: #ffc107 !important;
-}
+  .nav-link:hover,
+  .nav-link.active {
+    color: #ffc107 !important;
+  }
 
-/* Contenuto principale che prende tutto lo spazio */
-.main-content {
-  flex: 1 0 auto; /* cresce per spingere il footer in basso */
-  width: 100%;
-  padding: 50px 0;
-}
+  /* Contenuto principale */
+  .main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    padding: 50px 0;
+  }
 
-/* Servizi */
-.service-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  padding: 30px 20px;
-  transition: transform 0.3s;
-  margin-bottom: 30px;
-}
+  /* Servizi */
+  .service-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 30px 20px;
+    transition: transform 0.3s;
+    margin-bottom: 30px;
+  }
 
-.service-card:hover {
-  transform: translateY(-5px);
-}
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
 
-.service-icon {
-  font-size: 50px;
-  margin-bottom: 15px;
-}
+  .service-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
 
-.service-card h3 {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+  .service-card h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
 
-.service-card p {
-  color: #555;
-}
+  .service-card p {
+    color: #555;
+  }
 
-/* Footer */
-footer {
-  flex-shrink: 0; /* impedisce al footer di restringersi */
-  background-color: #343a40;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-  border-top: 3px solid #007bff;
-}
-
-
+  /* Footer */
+  footer {
+    flex-shrink: 0;
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 3px solid #007bff;
+  }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ url('/welcome') }}">Blog fanta e game</a>
+      <a class="navbar-brand" href="{{ route('welcome') }}">Blog fanta e game</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="{{ url('/welcome') }}">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url('/post') }}">Post</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url('/servizi') }}">Servizi</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">Chi sono</a></li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('post') ? 'active' : '' }}" href="{{ route('post') }}">Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('servizi') ? 'active' : '' }}" href="{{ route('servizi') }}">Servizi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::is('about') ? 'active' : '' }}" href="{{ route('about') }}">Chi siamo</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -122,5 +129,4 @@ footer {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
